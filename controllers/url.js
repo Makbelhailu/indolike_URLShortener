@@ -14,7 +14,7 @@ export async function generateShortUrl(req, res) {
       viewHistory: [],
     });
 
-    res.json(201).json({ id: shortId });
+    res.status(201).json({ id: shortId });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
