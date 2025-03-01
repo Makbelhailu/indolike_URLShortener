@@ -64,7 +64,7 @@ The server will start on the configured port (default: 5000).
 
 ### Create Short URL
 
-- **POST** `/api/url/shorten`
+- **POST** `/api/url/`
 - **Body**:
 
 ```json
@@ -77,7 +77,7 @@ The server will start on the configured port (default: 5000).
 
 ```json
 {
-  "shortUrl": "http://localhost:5000/xyz123"
+  "id": "xyz123"
 }
 ```
 
@@ -85,6 +85,11 @@ The server will start on the configured port (default: 5000).
 
 - **GET** `/api/url/:shortId`
 - Redirects to the original URL for the given short code
+
+### Get Analytics
+
+- **GET** `/api/url/analytics/:shortId`
+- Returns the click statistics for the given short code
 
 ## Technology Stack
 
