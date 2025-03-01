@@ -32,3 +32,16 @@ export async function getOriginalUrl(req, res) {
     res.status(500).json({ error: err.message });
   }
 }
+
+export async function getAnalytics(req, res) {
+  try {
+    const { shortId } = req.params;
+    const url = await URL.findOne({ shortId }).select("viewHistory");
+    if (!url) return res.status(404).json({ error: "URL not found" });
+    const totalClick = url.viewHistory.length;
+    const analytics = url.viewHistory.map((history) => history.timestamp);
+    res.status(200).json({ totalClick, analytics });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+}
